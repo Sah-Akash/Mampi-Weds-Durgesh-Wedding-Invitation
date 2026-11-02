@@ -1,3 +1,10 @@
+import ganeshaGoldImg from '../assets/images/lord_ganesha_gold.jpg';
+import heroMandapImg from '../assets/images/bihari_vivah_mandap_illustrated_1793611112728.jpg';
+import couplePortraitImg from '../assets/images/bihari_couple_portrait_1793610741678.jpg';
+import mehendiRitualImg from '../assets/images/bihari_mehendi_illustrated_1793611108611.jpg';
+import haldiRitualImg from '../assets/images/bihari_matkor_haldi_illustrated_1793611111600.jpg';
+import venueHallImg from '../assets/images/venue_bhawan_illustrated_1793611113680.jpg';
+
 export type LanguageMode = 'bilingual' | 'en' | 'hi';
 
 export interface WeddingEventItem {
@@ -25,11 +32,21 @@ export interface WeddingEventItem {
 }
 
 export const WEDDING_IMAGES = {
-  heroMandap: '/src/assets/images/bihari_vivah_mandap_illustrated_1793611112728.jpg',
-  couplePortrait: '/src/assets/images/bihari_couple_portrait_1793610741678.jpg',
-  mehendiRitual: '/src/assets/images/bihari_mehendi_illustrated_1793611108611.jpg',
-  haldiRitual: '/src/assets/images/bihari_matkor_haldi_illustrated_1793611111600.jpg',
-  venueHall: '/src/assets/images/venue_bhawan_illustrated_1793611113680.jpg',
+  ganeshaGold: ganeshaGoldImg,
+  heroMandap: heroMandapImg,
+  couplePortrait: couplePortraitImg,
+  mehendiRitual: mehendiRitualImg,
+  haldiRitual: haldiRitualImg,
+  venueHall: venueHallImg,
+};
+
+export const WEDDING_IMAGE_FALLBACKS: Record<string, string> = {
+  [ganeshaGoldImg]: '/assets/lord_ganesha_gold.jpg',
+  [heroMandapImg]: '/assets/images/bihari_vivah_mandap_illustrated_1793611112728.jpg',
+  [couplePortraitImg]: '/assets/images/bihari_couple_portrait_1793610741678.jpg',
+  [mehendiRitualImg]: '/assets/images/bihari_mehendi_illustrated_1793611108611.jpg',
+  [haldiRitualImg]: '/assets/images/bihari_matkor_haldi_illustrated_1793611111600.jpg',
+  [venueHallImg]: '/assets/images/venue_bhawan_illustrated_1793611113680.jpg',
 };
 
 export const WEDDING_CORE = {

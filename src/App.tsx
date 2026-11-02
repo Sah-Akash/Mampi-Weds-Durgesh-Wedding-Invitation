@@ -57,7 +57,7 @@ import {
   appendRsvpRecordsToSheet,
   fetchRsvpRowsFromSheet,
 } from './services/googleSheetsAuth';
-import { WEDDING_IMAGES } from './data/weddingData';
+import { WEDDING_IMAGES, WEDDING_IMAGE_FALLBACKS } from './data/weddingData';
 
 /* ============================================================================
  * 1. FALLING MARIGOLD, ROSE & GOLD CONFETTI PETALS CANVAS (Exact Clone of `ee`)
@@ -947,8 +947,15 @@ function CoupleSection() {
               <img
                 src={WEDDING_IMAGES.couplePortrait}
                 alt="Mampi and Durgesh in Traditional Bihari Wedding Attire"
+                loading="eager"
+                decoding="async"
+                onError={(e) => {
+                  const fallback = WEDDING_IMAGE_FALLBACKS[WEDDING_IMAGES.couplePortrait];
+                  if (fallback && e.currentTarget.src !== window.location.origin + fallback) {
+                    e.currentTarget.src = fallback;
+                  }
+                }}
                 className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700 select-none"
-                referrerPolicy="no-referrer"
               />
 
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#230911]/92 via-[#230911]/60 to-transparent pt-12 pb-4 px-4 text-center text-white z-10">
@@ -1477,8 +1484,15 @@ function GallerySection() {
               <img
                 src={item.imageSrc}
                 alt={item.title}
+                loading="eager"
+                decoding="async"
+                onError={(e) => {
+                  const fallback = WEDDING_IMAGE_FALLBACKS[item.imageSrc];
+                  if (fallback && e.currentTarget.src !== window.location.origin + fallback) {
+                    e.currentTarget.src = fallback;
+                  }
+                }}
                 className="w-full h-full object-cover object-top sm:object-center group-hover:scale-105 transition-transform duration-700 select-none"
-                referrerPolicy="no-referrer"
               />
               <div className="absolute top-3 left-3 z-10">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#230911]/80 backdrop-blur-sm border border-[#D4AF37]/60 text-[10px] font-semibold tracking-wider text-[#F3E5AB] uppercase shadow-md">
@@ -1552,8 +1566,15 @@ function GallerySection() {
                 <img
                   src={selectedPhoto.imageSrc}
                   alt={selectedPhoto.title}
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => {
+                    const fallback = WEDDING_IMAGE_FALLBACKS[selectedPhoto.imageSrc];
+                    if (fallback && e.currentTarget.src !== window.location.origin + fallback) {
+                      e.currentTarget.src = fallback;
+                    }
+                  }}
                   className="w-full h-full object-contain"
-                  referrerPolicy="no-referrer"
                 />
               </div>
               <div className="p-5 text-center bg-[#FDFBF7] border-t border-[#D4AF37]/30">
@@ -2763,7 +2784,7 @@ function FloatingBottomBar() {
 /* ============================================================================
  * 13. MAIN APPLICATION (`qe` in reference)
  * ============================================================================ */
-const GANESHA_GOLD_SRC = '/assets/lord_ganesha_gold.jpg';
+const GANESHA_GOLD_SRC = WEDDING_IMAGES.ganeshaGold;
 
 export default function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
