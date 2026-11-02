@@ -1045,14 +1045,14 @@ function CoupleSection() {
                 <span className="font-medium">
                   Daughter of{' '}
                   <strong className="text-[#800020] font-semibold">
-                    Poonam Saw
+                    Lt. Saroj Kumar Sah
                   </strong>{' '}
                   &amp;{' '}
                   <strong className="text-[#800020] font-semibold">
-                    Lt. Saroj Kumar Sah
+                    Poonam Saw
                   </strong>
                   <span className="block font-devanagari text-xs text-[#800020]/85 mt-1">
-                    सुपुत्री: श्रीमती पूनम साव एवं स्व. सरोज कुमार साह
+                    सुपुत्री: स्व. सरोज कुमार साह एवं श्रीमती पूनम साव
                   </span>
                 </span>
               </div>
@@ -1113,14 +1113,14 @@ function CoupleSection() {
                 <span className="font-medium">
                   Son of{' '}
                   <strong className="text-[#800020] font-semibold">
-                    Lt. Shobha Devi
+                    Lt. Vishwanath Keshri
                   </strong>{' '}
                   &amp;{' '}
                   <strong className="text-[#800020] font-semibold">
-                    Lt. Vishwanath Keshri
+                    Lt. Shobha Devi
                   </strong>
                   <span className="block font-devanagari text-xs text-[#800020]/85 mt-1">
-                    सुपुत्र: स्व. शोभा देवी एवं स्व. विश्वनाथ केसरी
+                    सुपुत्र: स्व. विश्वनाथ केसरी एवं स्व. शोभा देवी
                   </span>
                 </span>
               </div>
@@ -1942,8 +1942,8 @@ interface BlessingItem {
 const FAMILY_SEED_BLESSINGS: BlessingItem[] = [
   {
     id: 'bless-family-1',
-    name: 'Poonam Saw & Lt. Saroj Kumar Sah (Blessings)',
-    relation: "Bride's Parents (वधू के माता-पिता)",
+    name: 'Lt. Saroj Kumar Sah & Poonam Saw (Blessings)',
+    relation: "Bride's Parents (वधू के पिता एवं माता)",
     message:
       'May Maa Tara & Lord Ganesha bless Mampi & Durgesh with endless peace, good health, and lifelong togetherness. Shubh Vivah! (माँ तारा की कृपा सदैव बनी रहे।)',
     ceremony: 'Wedding (24.11.2026)',
@@ -1952,8 +1952,8 @@ const FAMILY_SEED_BLESSINGS: BlessingItem[] = [
   },
   {
     id: 'bless-family-2',
-    name: 'Lt. Shobha Devi & Lt. Vishwanath Keshri (Heavenly Blessings)',
-    relation: "Groom's Parents (वर के माता-पिता)",
+    name: 'Lt. Vishwanath Keshri & Lt. Shobha Devi (Heavenly Blessings)',
+    relation: "Groom's Parents (वर के पिता एवं माता)",
     message:
       'With heavenly blessings and open hearts, the Keshri family welcomes Mampi as our beloved daughter. May your home always echo with laughter!',
     ceremony: 'All Ceremonies (22.11 – 24.11.2026)',
