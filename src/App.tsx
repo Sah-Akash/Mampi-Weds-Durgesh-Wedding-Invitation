@@ -605,35 +605,17 @@ function BrideCrownIcon({ className = 'w-10 h-10' }: { className?: string }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M12 40 L16 26 L24 34 L32 14 L40 34 L48 26 L52 40 Z"
-        fill="#FFFFFF"
-        stroke="#D4AF37"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      <circle cx="32" cy="12" r="2.5" fill="#D4AF37" />
-      <circle cx="16" cy="24" r="2" fill="#D4AF37" />
-      <circle cx="48" cy="24" r="2" fill="#D4AF37" />
-      <circle
-        cx="32"
-        cy="28"
-        r="3"
-        fill="#800020"
-        stroke="#D4AF37"
-        strokeWidth="0.8"
-      />
-      <path
-        d="M20 48 C24 45 28 45 32 49 C36 45 40 45 44 48"
-        stroke="#FDFBF7"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <circle cx="32" cy="45" r="2" fill="#800020" />
-      <circle cx="26" cy="46" r="1" fill="#FFFFFF" />
-      <circle cx="38" cy="46" r="1" fill="#FFFFFF" />
-      <circle cx="22" cy="48" r="1" fill="#FFFFFF" />
-      <circle cx="42" cy="48" r="1" fill="#FFFFFF" />
+      {/* Gold Maang Tikka chain & pendant */}
+      <path d="M32 6 V22" stroke="#D4AF37" strokeWidth="2" strokeDasharray="2 2" />
+      <circle cx="32" cy="27" r="6" fill="#D4AF37" stroke="#FDFBF7" strokeWidth="1" />
+      <circle cx="32" cy="27" r="3" fill="#800020" />
+      <path d="M20 20 C24 26 26 27 26 27 M44 20 C40 26 38 27 38 27" stroke="#D4AF37" strokeWidth="1.5" />
+      {/* Gold Nathiya (Bridal Nose Ring) & Bindi */}
+      <circle cx="32" cy="37" r="2.2" fill="#800020" stroke="#D4AF37" strokeWidth="0.8" />
+      <circle cx="27" cy="47" r="6.5" stroke="#D4AF37" strokeWidth="1.8" fill="none" />
+      <circle cx="21" cy="49" r="1.5" fill="#800020" />
+      <circle cx="23" cy="52" r="1.3" fill="#FDFBF7" />
+      <path d="M33 47 C39 47 44 43 47 38" stroke="#D4AF37" strokeWidth="1.3" strokeDasharray="2 1.5" />
     </svg>
   );
 }
@@ -646,21 +628,32 @@ function GroomToporIcon({ className = 'w-10 h-10' }: { className?: string }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      {/* Royal Bihari Wedding Pagdi / Safa with Kalgi */}
       <path
-        d="M32 6 L14 46 C14 50 18 52 32 52 C46 52 50 50 50 46 Z"
-        fill="#FFFFFF"
+        d="M12 42 C12 26 22 18 34 18 C46 18 52 26 52 42 C46 46 18 46 12 42 Z"
+        fill="#FDFBF7"
+        stroke="#D4AF37"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M14 36 C24 28 38 26 50 34"
+        stroke="#800020"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M16 30 C26 23 38 24 48 29"
         stroke="#D4AF37"
         strokeWidth="1.5"
+        strokeLinecap="round"
       />
-      <circle cx="32" cy="5" r="2.5" fill="#D4AF37" />
-      <path d="M32 7 L32 14" stroke="#800020" strokeWidth="1.2" />
-      <path d="M22 26 C26 27 38 27 42 26" stroke="#D4AF37" strokeWidth="1" />
-      <path d="M18 36 C24 38 40 38 46 36" stroke="#D4AF37" strokeWidth="1" />
-      <path d="M15 45 C23 48 41 48 49 45" stroke="#800020" strokeWidth="1.5" />
-      <circle cx="32" cy="20" r="1.5" fill="#800020" />
-      <circle cx="28" cy="31" r="1.2" fill="#800020" />
-      <circle cx="36" cy="31" r="1.2" fill="#800020" />
-      <rect x="20" y="52" width="24" height="4" rx="2" fill="#800020" />
+      {/* Kalgi plume & brooch */}
+      <path
+        d="M32 20 C32 12 37 7 42 8 C39 13 36 17 34 21"
+        fill="#D4AF37"
+      />
+      <circle cx="32" cy="23" r="3.5" fill="#800020" stroke="#D4AF37" strokeWidth="1.2" />
+      <rect x="14" y="43" width="36" height="5" rx="2.5" fill="#D4AF37" />
     </svg>
   );
 }
@@ -952,9 +945,9 @@ function CoupleSection() {
               <div className="absolute bottom-3 right-3 w-7 h-7 border-b-2 border-r-2 border-[#D4AF37] z-20 pointer-events-none drop-shadow-md" />
 
               <img
-                src="/assets/images/couple_portrait.png"
-                alt="Mampi and Durgesh in Traditional Wedding Attire"
-                className="w-full h-full object-contain sm:object-cover transform group-hover:scale-105 transition-transform duration-700 select-none"
+                src={WEDDING_IMAGES.couplePortrait}
+                alt="Mampi and Durgesh in Traditional Bihari Wedding Attire"
+                className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700 select-none"
                 referrerPolicy="no-referrer"
               />
 
@@ -1413,7 +1406,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     caption:
       'Two hearts bound by sacred traditions, unconditional love, and shared laughter.',
     quote: 'Two souls, one heart, walking a sacred journey hand in hand.',
-    imageSrc: '/assets/images/couple_portrait.png',
+    imageSrc: WEDDING_IMAGES.couplePortrait,
   },
   {
     id: 'photo-2',
@@ -1422,7 +1415,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     caption:
       'Intricate bridal henna adorned with blessings, folk melodies, and the warmth of our home in Rampurhat.',
     quote: 'Every auspicious pattern carries the prayers of our loved ones.',
-    imageSrc: WEDDING_IMAGES.couplePortrait,
+    imageSrc: WEDDING_IMAGES.mehendiRitual,
   },
   {
     id: 'photo-3',
@@ -1435,7 +1428,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'photo-4',
-    title: 'The Royal Wedding Mandap',
+    title: 'Shubh Vivah & Sacred Mandap',
     tag: '24.11.2026 • 7pm Onwards',
     caption:
       'Under the glowing floral mandap at Jay Maa Tara Anusthan Bhawan, two families unite in joy.',

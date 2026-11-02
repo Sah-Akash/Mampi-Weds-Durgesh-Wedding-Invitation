@@ -25,10 +25,11 @@ export interface WeddingEventItem {
 }
 
 export const WEDDING_IMAGES = {
-  heroMandap: '/src/assets/images/hero_wedding_mandap_1793607347959.jpg',
-  couplePortrait: '/src/assets/images/couple_traditional_portrait_1793607350128.jpg',
-  haldiRitual: '/src/assets/images/haldi_mehendi_ritual_1793607352047.jpg',
-  venueHall: '/src/assets/images/venue_banquet_hall_1793607352544.jpg',
+  heroMandap: '/src/assets/images/bihari_vivah_mandap_illustrated_1793611112728.jpg',
+  couplePortrait: '/src/assets/images/bihari_couple_portrait_1793610741678.jpg',
+  mehendiRitual: '/src/assets/images/bihari_mehendi_illustrated_1793611108611.jpg',
+  haldiRitual: '/src/assets/images/bihari_matkor_haldi_illustrated_1793611111600.jpg',
+  venueHall: '/src/assets/images/venue_bhawan_illustrated_1793611113680.jpg',
 };
 
 export const WEDDING_CORE = {
