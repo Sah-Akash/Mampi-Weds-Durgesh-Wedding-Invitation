@@ -1,0 +1,6 @@
+{
+  "name": "Mampi Weds Durgesh | Wedding Invitation",
+  "description": "Bilingual digital wedding invitation for Mampi & Durgesh on 24.11.2026 at Jay Maa Tara Anusthan Bhawan, Rampurhat, with interactive venue map and live RSVP sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
