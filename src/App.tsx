@@ -28,6 +28,8 @@ import {
   MessageSquareHeart,
   Music,
   Navigation,
+  Pause,
+  Play,
   RotateCw,
   Send,
   Shirt,
@@ -820,8 +822,12 @@ function WaxSealEnvelope({
  * ============================================================================ */
 function StickyHeader({
   onReopenEnvelope,
+  isAutoScrolling,
+  onToggleAutoScroll,
 }: {
   onReopenEnvelope: () => void;
+  isAutoScrolling: boolean;
+  onToggleAutoScroll: () => void;
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -858,6 +864,33 @@ function StickyHeader({
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            data-autoscroll-control="true"
+            onClick={onToggleAutoScroll}
+            className={`group relative flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all shadow-sm active:scale-95 cursor-pointer ${
+              isAutoScrolling
+                ? 'bg-[#800020] text-[#F3E5AB] border border-[#D4AF37] ring-1 ring-[#D4AF37]/50'
+                : 'bg-white border border-[#D4AF37]/60 text-slate-600 hover:text-[#800020] hover:bg-[#FAF5EB]'
+            }`}
+            title={isAutoScrolling ? 'Pause Auto-Scroll' : 'Start Auto-Scroll'}
+            aria-label={isAutoScrolling ? 'Pause auto-scroll' : 'Start auto-scroll'}
+          >
+            {isAutoScrolling ? (
+              <>
+                <Pause className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <span className="hidden sm:inline">Auto-Scroll: On</span>
+                <span className="sm:hidden">Pause</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#800020]" />
+                <span className="hidden sm:inline">Auto-Scroll</span>
+                <span className="sm:hidden">Auto</span>
+              </>
+            )}
+          </button>
+
           <button
             type="button"
             onClick={() => {
@@ -2712,7 +2745,13 @@ function RsvpAndBlessingsSection() {
 /* ============================================================================
  * 12. FLOATING BOTTOM BAR (`Ge` in reference)
  * ============================================================================ */
-function FloatingBottomBar() {
+function FloatingBottomBar({
+  isAutoScrolling,
+  onToggleAutoScroll,
+}: {
+  isAutoScrolling: boolean;
+  onToggleAutoScroll: () => void;
+}) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -2720,15 +2759,15 @@ function FloatingBottomBar() {
   }, []);
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-md pointer-events-auto">
-      <div className="flex items-center justify-between gap-2 p-2 rounded-2xl bg-[#800020]/95 backdrop-blur-md border border-[#D4AF37] shadow-2xl text-white">
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-lg pointer-events-auto">
+      <div className="flex items-center justify-between gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-2xl bg-[#800020]/95 backdrop-blur-md border border-[#D4AF37] shadow-2xl text-white">
         <button
           type="button"
           onClick={() => {
             if (!isPlaying) showerPetals(50);
             weddingAudio.toggleMusic();
           }}
-          className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all duration-300 cursor-pointer ${
+          className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all duration-300 cursor-pointer ${
             isPlaying
               ? 'bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] text-[#800020] shadow-md'
               : 'bg-white/10 hover:bg-white/20 text-[#FDFBF7]'
@@ -2738,21 +2777,42 @@ function FloatingBottomBar() {
         >
           {isPlaying ? (
             <>
-              <Volume2 className="w-4 h-4 text-[#800020] animate-pulse" />
-              <span className="truncate font-bold">Music: On</span>
-              <span
-                className="flex items-end gap-0.5 h-3 ml-0.5"
-                aria-hidden="true"
-              >
-                <span className="w-0.5 h-2 bg-[#800020] animate-pulse" />
-                <span className="w-0.5 h-3 bg-[#800020] animate-pulse delay-75" />
-                <span className="w-0.5 h-1.5 bg-[#800020] animate-pulse delay-150" />
-              </span>
+              <Volume2 className="w-4 h-4 text-[#800020] animate-pulse shrink-0" />
+              <span className="truncate font-bold hidden sm:inline">Music: On</span>
+              <span className="truncate font-bold sm:hidden">Music</span>
             </>
           ) : (
             <>
-              <VolumeX className="w-4 h-4 text-[#F3E5AB]" />
-              <span className="truncate">Music: Muted</span>
+              <VolumeX className="w-4 h-4 text-[#F3E5AB] shrink-0" />
+              <span className="truncate hidden sm:inline">Music: Muted</span>
+              <span className="truncate sm:hidden">Mute</span>
+            </>
+          )}
+        </button>
+
+        <button
+          type="button"
+          data-autoscroll-control="true"
+          onClick={onToggleAutoScroll}
+          className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2.5 rounded-xl text-xs font-semibold tracking-wide transition-all duration-300 cursor-pointer ${
+            isAutoScrolling
+              ? 'bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] text-[#800020] shadow-md ring-1 ring-[#D4AF37]'
+              : 'bg-white/10 hover:bg-white/20 text-[#FDFBF7]'
+          }`}
+          title={isAutoScrolling ? 'Pause Auto-Scroll' : 'Start Auto-Scroll'}
+          aria-label={isAutoScrolling ? 'Pause auto-scroll' : 'Start auto-scroll'}
+        >
+          {isAutoScrolling ? (
+            <>
+              <Pause className="w-4 h-4 text-[#800020] fill-[#800020] shrink-0" />
+              <span className="truncate font-bold hidden sm:inline">Auto-Scroll: On</span>
+              <span className="truncate font-bold sm:hidden">Pause</span>
+            </>
+          ) : (
+            <>
+              <Play className="w-4 h-4 text-[#F3E5AB] shrink-0" />
+              <span className="truncate hidden sm:inline">Auto-Scroll</span>
+              <span className="truncate sm:hidden">Auto</span>
             </>
           )}
         </button>
@@ -2760,20 +2820,20 @@ function FloatingBottomBar() {
         <button
           type="button"
           onClick={() => showerPetals(50)}
-          className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-[#D4AF37] text-[#800020] text-xs font-semibold hover:bg-[#c49f2e] active:scale-95 transition-all shadow-md shrink-0 cursor-pointer"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-2.5 rounded-xl bg-[#D4AF37] text-[#800020] text-xs font-semibold hover:bg-[#c49f2e] active:scale-95 transition-all shadow-md shrink-0 cursor-pointer"
           title="Shower Marigold Petals"
           aria-label="Drop marigold flower petals"
         >
-          <Flower2 className="w-4 h-4" />
+          <Flower2 className="w-4 h-4 shrink-0" />
           <span className="hidden sm:inline">Petals</span>
         </button>
 
         <a
           href="#rsvp"
-          className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-[#FDFBF7] text-xs font-medium transition-colors shrink-0"
+          className="flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-[#FDFBF7] text-xs font-medium transition-colors shrink-0"
           aria-label="Jump to RSVP section"
         >
-          <Heart className="w-3.5 h-3.5 fill-[#D4AF37] text-[#D4AF37]" />
+          <Heart className="w-3.5 h-3.5 fill-[#D4AF37] text-[#D4AF37] shrink-0" />
           <span>RSVP</span>
         </a>
       </div>
@@ -2788,11 +2848,84 @@ const GANESHA_GOLD_SRC = WEDDING_IMAGES.ganeshaGold;
 
 export default function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+  const [scrollSpeed, setScrollSpeed] = useState<number>(1);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (sessionStorage.getItem('wedding_envelope_opened') === 'true') {
       setIsEnvelopeOpen(true);
     }
+  }, []);
+
+  const toggleAutoScroll = useCallback(() => {
+    setIsAutoScrolling((prev) => !prev);
+  }, []);
+
+  const toggleSpeed = useCallback(() => {
+    setScrollSpeed((prev) => (prev === 1 ? 1.6 : 1));
+  }, []);
+
+  // Frame-by-frame smooth auto-scroll loop
+  useEffect(() => {
+    if (!isAutoScrolling) {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      return;
+    }
+
+    let lastTime = performance.now();
+    const step = (now: number) => {
+      const delta = (now - lastTime) / 1000;
+      lastTime = now;
+
+      // Prevent sudden jumps if tab was inactive
+      const clampedDelta = Math.min(delta, 0.05);
+      const pixels = scrollSpeed * 48 * clampedDelta; // ~48px/sec for comfortable reading
+
+      const isBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 20;
+
+      if (isBottom) {
+        setIsAutoScrolling(false);
+        return;
+      }
+
+      window.scrollBy({ top: pixels, behavior: 'instant' as ScrollBehavior });
+      rafRef.current = requestAnimationFrame(step);
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [isAutoScrolling, scrollSpeed]);
+
+  // Pause auto-scroll on manual user interaction
+  useEffect(() => {
+    const handleUserInterrupt = (e: Event) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.closest('[data-autoscroll-control]')) {
+        return;
+      }
+      setIsAutoScrolling(false);
+    };
+
+    window.addEventListener('wheel', handleUserInterrupt, { passive: true });
+    window.addEventListener('touchmove', handleUserInterrupt, { passive: true });
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Space'].includes(e.code)) {
+        handleUserInterrupt(e);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('wheel', handleUserInterrupt);
+      window.removeEventListener('touchmove', handleUserInterrupt);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   return (
@@ -2804,12 +2937,54 @@ export default function App() {
           onOpen={() => {
             setIsEnvelopeOpen(true);
             sessionStorage.setItem('wedding_envelope_opened', 'true');
+            // Start gentle auto-scroll tour 1.2s after envelope opening
+            setTimeout(() => {
+              setIsAutoScrolling(true);
+            }, 1200);
           }}
           isOpen={isEnvelopeOpen}
         />
       )}
 
-      <StickyHeader onReopenEnvelope={() => setIsEnvelopeOpen(false)} />
+      {/* Floating Auto-Scroll Tour Controller Pill */}
+      {isAutoScrolling && (
+        <div
+          data-autoscroll-control="true"
+          className="fixed top-20 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 sm:gap-3 px-4 py-2 rounded-full bg-[#800020]/95 text-[#FDFBF7] border border-[#D4AF37] shadow-2xl backdrop-blur-md animate-fadeIn transition-all select-none"
+        >
+          <span className="flex h-2 w-2 relative">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4AF37]" />
+          </span>
+          <span className="text-xs font-medium text-[#F3E5AB] tracking-wide whitespace-nowrap">
+            Auto-Scroll Active • स्वतः अवलोकन
+          </span>
+          <button
+            type="button"
+            data-autoscroll-control="true"
+            onClick={toggleSpeed}
+            className="px-2 py-0.5 rounded-full bg-white/15 hover:bg-white/25 text-[10px] font-bold text-[#FDFBF7] tracking-wider transition-colors cursor-pointer"
+            title="Toggle scroll speed (1x / 1.6x)"
+          >
+            {scrollSpeed === 1 ? '1x' : '1.6x'}
+          </button>
+          <button
+            type="button"
+            data-autoscroll-control="true"
+            onClick={toggleAutoScroll}
+            className="flex items-center gap-1 text-[11px] font-semibold text-[#800020] bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB] px-2.5 py-0.5 rounded-full shadow hover:brightness-105 active:scale-95 transition-transform cursor-pointer"
+          >
+            <Pause className="w-3 h-3 fill-current" />
+            <span>Pause</span>
+          </button>
+        </div>
+      )}
+
+      <StickyHeader
+        onReopenEnvelope={() => setIsEnvelopeOpen(false)}
+        isAutoScrolling={isAutoScrolling}
+        onToggleAutoScroll={toggleAutoScroll}
+      />
 
       <main className="relative">
         {/* Hero Invitation Section */}
@@ -2931,6 +3106,24 @@ export default function App() {
 
                   {/* Action Buttons */}
                   <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+                    <button
+                      type="button"
+                      data-autoscroll-control="true"
+                      onClick={toggleAutoScroll}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#800020] via-[#940026] to-[#800020] hover:brightness-110 text-[#F3E5AB] border border-[#D4AF37]/60 text-xs font-bold tracking-wide shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                    >
+                      {isAutoScrolling ? (
+                        <>
+                          <Pause className="w-3.5 h-3.5 fill-[#F3E5AB] text-[#F3E5AB]" />
+                          <span>Pause Auto-Scroll</span>
+                        </>
+                      ) : (
+                        <>
+                          <Play className="w-3.5 h-3.5 fill-[#F3E5AB] text-[#F3E5AB]" />
+                          <span>Auto-Scroll Tour</span>
+                        </>
+                      )}
+                    </button>
                     <a
                       href="#venues"
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FAF5EB] hover:bg-[#F3E5AB]/40 text-[#800020] border border-[#D4AF37]/60 text-xs font-semibold tracking-wide shadow-sm transition-all hover:scale-105 active:scale-95"
@@ -2967,7 +3160,10 @@ export default function App() {
         <RsvpAndBlessingsSection />
       </main>
 
-      <FloatingBottomBar />
+      <FloatingBottomBar
+        isAutoScrolling={isAutoScrolling}
+        onToggleAutoScroll={toggleAutoScroll}
+      />
     </div>
   );
 }
