@@ -780,7 +780,7 @@ function WaxSealEnvelope({
               Durgesh
             </h1>
             <p className="font-devanagari text-xs text-[#F3E5AB]/90">
-              आयुष्मती मम्पी संग चिरंजीव दुर्गेश • २४.११.२०२६
+              आयुष्मती माम्पी संग चिरंजीव दुर्गेश • २४.११.२०२६
             </p>
           </div>
 
@@ -968,7 +968,7 @@ function CoupleSection() {
                   Mampi WEDS Durgesh
                 </h3>
                 <p className="font-cormorant italic text-xs sm:text-sm text-[#FDFBF7]/90 mt-0.5">
-                  Two souls united under the blessings of our elders • मम्पी संग दुर्गेश
+                  Two souls united under the blessings of our elders • माम्पी संग दुर्गेश
                 </p>
               </div>
             </div>
@@ -997,7 +997,7 @@ function CoupleSection() {
                   Mampi
                 </h3>
                 <span className="font-devanagari text-xs text-[#997A15] font-semibold">
-                  आयुष्मती मम्पी
+                  आयुष्मती माम्पी
                 </span>
               </div>
             </div>
@@ -2885,7 +2885,7 @@ export default function App() {
                   </h1>
 
                   <p className="font-devanagari text-lg sm:text-xl text-[#800020] font-bold">
-                    आयुष्मती मम्पी संग चिरंजीव दुर्गेश
+                    आयुष्मती माम्पी संग चिरंजीव दुर्गेश
                   </p>
 
                   <p className="font-cormorant italic text-xl sm:text-2xl text-[#800020] font-semibold max-w-xl mx-auto leading-relaxed">
@@ -2897,7 +2897,7 @@ export default function App() {
                       &ldquo;As two souls unite under the sacred fire of Shubh Vivah and the sweet melodies of the Shehnai, we embark on life&apos;s most beautiful journey of love, friendship, and togetherness.&rdquo;
                     </p>
                     <p className="font-devanagari text-xs sm:text-sm text-[#800020]/90 leading-relaxed max-w-xl mx-auto">
-                      स्व. सरोज कुमार साह, स्व. विश्वनाथ केसरी एवं स्व. शोभा देवी के दिव्य आशीर्वाद से, श्रीमती पूनम साव अपनी सुपुत्री मम्पी एवं चिरंजीव दुर्गेश के शुभ विवाह के मांगलिक अवसर पर आपको सपरिवार सादर आमंत्रित करती हैं।
+                      स्व. सरोज कुमार साह, स्व. विश्वनाथ केसरी एवं स्व. शोभा देवी के दिव्य आशीर्वाद से, श्रीमती पूनम साव अपनी सुपुत्री माम्पी एवं चिरंजीव दुर्गेश के शुभ विवाह के मांगलिक अवसर पर आपको सपरिवार सादर आमंत्रित करती हैं।
                     </p>
                     <p className="font-cormorant text-xs sm:text-sm text-[#800020] font-medium mt-1">
                       Your warm presence, prayers, and blessings will make our special day truly blessed.

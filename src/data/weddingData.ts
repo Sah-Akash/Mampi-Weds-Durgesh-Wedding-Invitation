@@ -59,7 +59,7 @@ export const WEDDING_CORE = {
   weddingIsoTarget: '2026-11-24T19:00:00+05:30',
   bride: {
     nameEn: 'Mampi',
-    nameHi: 'मम्पी (आयुष्मती मम्पी)',
+    nameHi: 'माम्पी (आयुष्मती माम्पी)',
     fatherEn: 'Lt. Saroj Kumar Sah',
     fatherHi: 'स्व. सरोज कुमार साह',
     motherEn: 'Smt. Poonam Saw',
@@ -101,7 +101,7 @@ export const WEDDING_CORE = {
     letterEn:
       'With the heavenly blessings of Late Saroj Kumar Sah, Late Vishwanath Keshri, and Late Shobha Devi, Mrs. Poonam Saw cordially requests the honor of your presence and blessings with family at the auspicious wedding celebration of her beloved daughter Mampi with Durgesh.',
     letterHi:
-      'स्व. सरोज कुमार साह, स्व. विश्वनाथ केसरी एवं स्व. शोभा देवी के दिव्य आशीर्वाद से, श्रीमती पूनम साव अपनी लाड़ली सुपुत्री आयुष्मती मम्पी एवं चिरंजीव दुर्गेश के शुभ विवाह के मांगलिक अवसर पर आपको सपरिवार पधारने एवं नवयुगल को आशीर्वाद प्रदान करने हेतु सादर आमंत्रित करती हैं।',
+      'स्व. सरोज कुमार साह, स्व. विश्वनाथ केसरी एवं स्व. शोभा देवी के दिव्य आशीर्वाद से, श्रीमती पूनम साव अपनी लाड़ली सुपुत्री आयुष्मती माम्पी एवं चिरंजीव दुर्गेश के शुभ विवाह के मांगलिक अवसर पर आपको सपरिवार पधारने एवं नवयुगल को आशीर्वाद प्रदान करने हेतु सादर आमंत्रित करती हैं।',
   },
 };
 
