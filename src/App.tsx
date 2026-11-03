@@ -1976,7 +1976,9 @@ function RsvpAndBlessingsSection() {
   });
   const [fullName, setFullName] = useState('');
   const [relation, setRelation] = useState('');
-  const [guestsCount, setGuestsCount] = useState('2');
+  const [attendance, setAttendance] = useState<
+    'joyfully_attending' | 'regretfully_unable'
+  >('joyfully_attending');
   const [ceremony, setCeremony] = useState(
     'All Ceremonies (22.11 - 24.11.2026)'
   );
@@ -2119,7 +2121,7 @@ function RsvpAndBlessingsSection() {
           guestName: b.name,
           phone: '',
           attendance: 'joyfully_attending',
-          guestCount: 2,
+          guestCount: 1,
           side: 'both',
           events: [b.ceremony],
           arrivalInfo: b.relation,
@@ -2172,7 +2174,7 @@ function RsvpAndBlessingsSection() {
     }
   };
 
-  const isCannotAttend = guestsCount === 'Regretfully Cannot Attend';
+  const isCannotAttend = attendance === 'regretfully_unable';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -2213,9 +2215,7 @@ function RsvpAndBlessingsSection() {
           attendance: isCannotAttend
             ? 'regretfully_unable'
             : 'joyfully_attending',
-          guestCount: isCannotAttend
-            ? 0
-            : Number.parseInt(guestsCount, 10) || 2,
+          guestCount: isCannotAttend ? 0 : 1,
           side: 'both',
           events: [selectedCeremony],
           arrivalInfo: newBlessing.relation,
@@ -2367,18 +2367,21 @@ function RsvpAndBlessingsSection() {
 
                 <div>
                   <label className="block text-xs font-semibold text-[#800020] mb-1">
-                    Number of Guests • अतिथि संख्या
+                    Will You Attend? • क्या आप पधार रहे हैं?
                   </label>
                   <select
-                    value={guestsCount}
-                    onChange={(e) => setGuestsCount(e.target.value)}
+                    value={attendance}
+                    onChange={(e) =>
+                      setAttendance(
+                        e.target.value as 'joyfully_attending' | 'regretfully_unable'
+                      )
+                    }
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#D4AF37]/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#800020]"
                   >
-                    <option value="1">1 Guest (१ अतिथि)</option>
-                    <option value="2">2 Guests (२ अतिथि)</option>
-                    <option value="3">3 Guests (३ अतिथि)</option>
-                    <option value="4+">4+ Family Members (सपरिवार)</option>
-                    <option value="Regretfully Cannot Attend">
+                    <option value="joyfully_attending">
+                      Joyfully Attending (उपस्थित रहेंगे)
+                    </option>
+                    <option value="regretfully_unable">
                       Sending Love from Afar (केवल शुभकामनाएँ)
                     </option>
                   </select>
@@ -2624,7 +2627,7 @@ function RsvpAndBlessingsSection() {
                                   guestName: b.name,
                                   phone: '',
                                   attendance: 'joyfully_attending',
-                                  guestCount: 2,
+                                  guestCount: 1,
                                   side: 'both',
                                   events: [b.ceremony],
                                   arrivalInfo: b.relation,

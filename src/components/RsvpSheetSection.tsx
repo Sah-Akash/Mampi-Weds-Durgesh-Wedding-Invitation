@@ -699,58 +699,34 @@ export const RsvpSheetSection: React.FC<RsvpSheetSectionProps> = ({ lang }) => {
               </div>
             </div>
 
-            {/* Attendance & Guest Count */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="sm:col-span-2">
-                <span className="block text-xs font-semibold text-[#231815] mb-1.5">
-                  Will You Attend? · क्या आप पधार रहे हैं? *
-                </span>
-                <div className="grid grid-cols-2 gap-2.5">
-                  <button
-                    type="button"
-                    onClick={() => setAttendance('joyfully_attending')}
-                    className={`py-2.5 px-3 text-xs font-semibold rounded-lg border transition-colors text-center whitespace-nowrap shrink-0 ${
-                      attendance === 'joyfully_attending'
-                        ? 'bg-[#8B1E24] text-white border-[#8B1E24]'
-                        : 'bg-white text-[#231815] border-[#D5C3AE] hover:bg-[#FAF6F0]'
-                    }`}
-                  >
-                    Joyfully Attending · हाँ, अवश्य
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setAttendance('regretfully_unable')}
-                    className={`py-2.5 px-3 text-xs font-semibold rounded-lg border transition-colors text-center whitespace-nowrap shrink-0 ${
-                      attendance === 'regretfully_unable'
-                        ? 'bg-[#231815] text-white border-[#231815]'
-                        : 'bg-white text-[#231815] border-[#D5C3AE] hover:bg-[#FAF6F0]'
-                    }`}
-                  >
-                    Sending Blessings · केवल शुभकामनाएँ
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="rsvp-count"
-                  className="block text-xs font-semibold text-[#231815] mb-1.5"
+            {/* Attendance Selection */}
+            <div>
+              <span className="block text-xs font-semibold text-[#231815] mb-1.5">
+                Will You Attend? · क्या आप पधार रहे हैं? *
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setAttendance('joyfully_attending')}
+                  className={`py-2.5 px-3 text-xs font-semibold rounded-lg border transition-colors text-center whitespace-nowrap shrink-0 ${
+                    attendance === 'joyfully_attending'
+                      ? 'bg-[#8B1E24] text-white border-[#8B1E24]'
+                      : 'bg-white text-[#231815] border-[#D5C3AE] hover:bg-[#FAF6F0]'
+                  }`}
                 >
-                  Number of Guests · सदस्य संख्या
-                </label>
-                <select
-                  id="rsvp-count"
-                  disabled={attendance === 'regretfully_unable'}
-                  value={guestCount}
-                  onChange={(e) => setGuestCount(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#D5C3AE] rounded-lg text-[#231815] font-mono-num focus:outline-none focus:border-[#8B1E24] disabled:opacity-50"
+                  Joyfully Attending · हाँ, अवश्य
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAttendance('regretfully_unable')}
+                  className={`py-2.5 px-3 text-xs font-semibold rounded-lg border transition-colors text-center whitespace-nowrap shrink-0 ${
+                    attendance === 'regretfully_unable'
+                      ? 'bg-[#231815] text-white border-[#231815]'
+                      : 'bg-white text-[#231815] border-[#D5C3AE] hover:bg-[#FAF6F0]'
+                  }`}
                 >
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 10].map((num) => (
-                    <option key={num} value={num}>
-                      {num} {num === 1 ? 'Guest (१ सदस्य)' : `Guests (${num} सदस्य)`}
-                    </option>
-                  ))}
-                </select>
+                  Sending Blessings · केवल शुभकामनाएँ
+                </button>
               </div>
             </div>
 
@@ -1191,9 +1167,7 @@ export const RsvpSheetSection: React.FC<RsvpSheetSectionProps> = ({ lang }) => {
                     </h4>
                     <span className="text-xs font-mono-num text-[#7C2D12] whitespace-nowrap shrink-0">
                       {item.attendance === 'joyfully_attending'
-                        ? `${item.guestCount} ${
-                            item.guestCount === 1 ? 'Guest' : 'Guests'
-                          }`
+                        ? 'Attending'
                         : 'Wishes Sent'}
                     </span>
                   </div>
